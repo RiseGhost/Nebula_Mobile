@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="PrimaryLight">#001463CF</color>
+    <color name="TextColorLight">#303030</color>
+    <color name="ShapeColorLight">#9CB0C1</color>
+    <color name="ShapeColorLightTransparent">#809CB0C1</color>
+    <color name="PrimaryDark">#0065CD76</color>
+    <color name="TextColorDark">#FFFFFF</color>
+    <color name="ShapeColorDark">#1E1E1E</color>
+    <color name="ShapeColorDarkTransparent">#801E1E1E</color>
+    <color name="NavigatorBarColor">#00FFFFFF</color>
 </resources>

@@ -3,5 +3,13 @@
     <style name="Base.Theme.NebulaMobile" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="android:windowBackground">@drawable/background_wave_drak</item>
+        <item name="colorPrimary">@color/PrimaryDark</item>
+        <item name="android:navigationBarColor">@color/NavigatorBarColor</item>
+        <item name="android:textColor">@color/TextColorDark</item>
+        <item name="CustomShapeColorTransparent">@color/ShapeColorDarkTransparent</item>
+        <item name="CustomShapeColor">@color/ShapeColorDark</item>
     </style>
+
+
 </resources>

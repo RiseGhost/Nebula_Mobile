@@ -3,6 +3,12 @@
     <style name="Base.Theme.NebulaMobile" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:windowBackground">@drawable/background_wave_light</item>
+        <item name="colorPrimary">@color/PrimaryLight</item>
+        <item name="android:navigationBarColor">@color/NavigatorBarColor</item>
+        <item name="android:textColor">@color/TextColorLight</item>
+        <item name="CustomShapeColorTransparent">@color/ShapeColorLightTransparent</item>
+        <item name="CustomShapeColor">@color/ShapeColorLight</item>
     </style>
 
     <style name="Theme.NebulaMobile" parent="Base.Theme.NebulaMobile" />
