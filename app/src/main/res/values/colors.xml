@@ -8,5 +8,5 @@
     <color name="TextColorDark">#FFFFFF</color>
     <color name="ShapeColorDark">#1E1E1E</color>
     <color name="ShapeColorDarkTransparent">#801E1E1E</color>
-    <color name="NavigatorBarColor">#00FFFFFF</color>
+    <color name="NavigatorColor">#00FFFFFF</color>
 </resources>

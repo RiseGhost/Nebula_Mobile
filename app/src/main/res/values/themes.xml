@@ -5,10 +5,11 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <item name="android:windowBackground">@drawable/background_wave_light</item>
         <item name="colorPrimary">@color/PrimaryLight</item>
-        <item name="android:navigationBarColor">@color/NavigatorBarColor</item>
+        <item name="android:navigationBarColor">@color/NavigatorColor</item>
         <item name="android:textColor">@color/TextColorLight</item>
         <item name="CustomShapeColorTransparent">@color/ShapeColorLightTransparent</item>
         <item name="CustomShapeColor">@color/ShapeColorLight</item>
+        <item name="HomePageBackgroundImage">@drawable/homepage_light</item>
     </style>
 
     <style name="Theme.NebulaMobile" parent="Base.Theme.NebulaMobile" />

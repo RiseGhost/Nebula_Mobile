@@ -2,6 +2,8 @@ package com.riseghost.nebulamobile;
 
 import android.util.Log;
 
+import org.json.JSONObject;
+
 import java.io.BufferedOutputStream;
 import java.io.OutputStream;
 import java.net.URL;
@@ -14,7 +16,7 @@ public class NebulaLogin extends Thread{
     private final String SessionCookie;
     private final String email;
     private final String password;
-    private String ResponseJSON = null;
+    private JSONObject ResponseJSON = null;
 
     public NebulaLogin(String NebulaURL,String SessionCookie, String email, String password){
         this.NebulaURL = NebulaURL;
@@ -53,7 +55,7 @@ public class NebulaLogin extends Thread{
         }
     }
 
-    public String getResponseJSON() throws InterruptedException {
+    public JSONObject getResponseJSON() throws InterruptedException {
         this.join();
         return this.ResponseJSON;
     }
