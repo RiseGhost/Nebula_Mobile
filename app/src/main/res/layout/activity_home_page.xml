@@ -6,4 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".HomePage">
 
+    <ScrollView
+        android:id="@+id/scrollExpolorer"
+        android:layout_width="match_parent"
+        android:layout_height="360dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/container_transparent"
+        android:layout_margin="15dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp">
+
+
+        <com.riseghost.nebulamobile.Explorer
+            android:id="@+id/Explorer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        </com.riseghost.nebulamobile.Explorer>
+
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
