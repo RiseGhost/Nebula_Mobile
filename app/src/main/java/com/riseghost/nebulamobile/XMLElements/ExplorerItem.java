@@ -1,15 +1,14 @@
-package com.riseghost.nebulamobile;
+package com.riseghost.nebulamobile.XMLElements;
 import android.content.Context;
-import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
+
+import com.riseghost.nebulamobile.R;
 
 
 public class ExplorerItem extends LinearLayout {
@@ -27,7 +26,7 @@ public class ExplorerItem extends LinearLayout {
     }
 
     private void init(){
-        this.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.container));
+        this.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.container));
         this.setGravity(Gravity.CENTER);
         LayoutParams params = new LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
@@ -38,7 +37,7 @@ public class ExplorerItem extends LinearLayout {
         this.setLayoutParams(params);
         if (this.Type.equals("dir")){
             this.setOnClickListener((event) -> {
-                this.explorer.UpdatePath(this.explorer.getPath() + "/" + this.ElementName);
+                this.explorer.UpdatePath(this.explorer.getPath() + this.ElementName + "/");
             });
         }
         this.addView(creatIcon());

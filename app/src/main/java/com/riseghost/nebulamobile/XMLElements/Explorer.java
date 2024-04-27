@@ -1,20 +1,23 @@
-package com.riseghost.nebulamobile;
+package com.riseghost.nebulamobile.XMLElements;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
+
+import com.riseghost.nebulamobile.NebulaDir;
+import com.riseghost.nebulamobile.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Explorer extends LinearLayout {
-    private String path = "";
+    private String path;
     private String NebulaURL;
     private String SessionCookies;
+    private ExplorerPath explorerPath;
 
     public Explorer(Context context) {
         super(context);
@@ -40,15 +43,19 @@ public class Explorer extends LinearLayout {
         this.SessionCookies = SessionCookies;
     }
 
+    public void setExplorerPath(ExplorerPath explorerPath){
+        this.explorerPath = explorerPath;
+        this.explorerPath.setExplorer(this);
+    }
+
     public void UpdatePath(String path){
         this.path = path;
-        Log.d("EXPLORERUPDATEPATH", path);
+        this.explorerPath.UpdatePath();
         this.removeAllViews();
         NebulaDir dir = new NebulaDir(this.NebulaURL,this.path,this.SessionCookies);
         try{
             JSONObject diretory = dir.getResponseJSON();
             if (diretory == null) return;
-            Log.d("EXPLORERUPDATEPATH", diretory.toString());
             for(int index = 0; index < diretory.length() / 2; index++){
                 String NameElement = diretory.getString(String.valueOf(index));
                 String Type = diretory.getString("type_" + index);

@@ -4,12 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
-import android.widget.Toast;
 
-import org.json.JSONObject;
+import com.riseghost.nebulamobile.XMLElements.Explorer;
 
 public class HomePage extends AppCompatActivity {
 
@@ -23,7 +19,8 @@ public class HomePage extends AppCompatActivity {
         Explorer explorer = findViewById(R.id.Explorer);
         explorer.setNebulaURL(NebulaURL);
         explorer.setSessionCookies(SessionCookie);
-        explorer.UpdatePath("");
+        explorer.setExplorerPath(findViewById(R.id.ExplorerPath));
+        explorer.UpdatePath("/");
         int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
         if (currentNightMode == Configuration.UI_MODE_NIGHT_NO) {
             getWindow().setBackgroundDrawableResource(R.drawable.homepage_light);

@@ -6,28 +6,39 @@
     android:layout_height="match_parent"
     tools:context=".HomePage">
 
+    <com.riseghost.nebulamobile.XMLElements.ExplorerPath
+        android:id="@+id/ExplorerPath"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/scrollExpolorer"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:padding="3dp"
+        android:gravity="center"/>
+
     <ScrollView
         android:id="@+id/scrollExpolorer"
         android:layout_width="match_parent"
-        android:layout_height="360dp"
+        android:layout_height="330dp"
         android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/container_transparent"
+        android:background="@drawable/container_transparent_bottom"
         android:layout_margin="15dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp">
 
 
-        <com.riseghost.nebulamobile.Explorer
+        <com.riseghost.nebulamobile.XMLElements.Explorer
             android:id="@+id/Explorer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-        </com.riseghost.nebulamobile.Explorer>
+        </com.riseghost.nebulamobile.XMLElements.Explorer>
 
     </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
