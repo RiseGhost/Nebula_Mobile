@@ -72,7 +72,6 @@ public class ReaderJSON {
             }
         }
         jsonReader.endObject();
-        //Log.d("JSONREADERNEBULA", jsonObject.toString());
         return jsonObject;
     }
 
