@@ -2,5 +2,5 @@
 <resources>
     <attr name="CustomShapeColor" format="reference"/>
     <attr name="CustomShapeColorTransparent" format="reference"></attr>
-    <attr name="HomePageBackgroundImage" format="reference"></attr>
+    <attr name="SideNavBar" format="reference"></attr>
 </resources>

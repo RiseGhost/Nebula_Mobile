@@ -9,7 +9,7 @@
         <item name="android:textColor">@color/TextColorDark</item>
         <item name="CustomShapeColorTransparent">@color/ShapeColorDarkTransparent</item>
         <item name="CustomShapeColor">@color/ShapeColorDark</item>
-        <item name="HomePageBackgroundImage">@drawable/homepage_dark</item>
+        <item name="SideNavBar">@drawable/side_nav_dark</item>
     </style>
 
 </resources>

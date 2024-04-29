@@ -28,8 +28,10 @@ public class MainActivity extends AppCompatActivity {
                 NebulaLogin login = new NebulaLogin(url.getText().toString(),cookie,email.getText().toString(),password.getText().toString());
                 Toast.makeText(getApplicationContext(),login.getResponseJSON().get("status").toString(),Toast.LENGTH_LONG).show();
                 if (login.getResponseJSON().get("status").equals("Sucess")){
-                    Intent intent = new Intent(this,HomePage.class);
+                    String SessionCookies = new ReadSessionCookie("NebulaSessionCookie",getApplicationContext()).read();
+                    Intent intent = new Intent(this,Desktop.class);
                     intent.putExtra("NebulaURL",url.getText().toString());
+                    intent.putExtra("SessionCookie",SessionCookies);
                     startActivity(intent);
                 }
             } catch (Exception e) {

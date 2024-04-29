@@ -9,8 +9,17 @@
         <item name="android:textColor">@color/TextColorLight</item>
         <item name="CustomShapeColorTransparent">@color/ShapeColorLightTransparent</item>
         <item name="CustomShapeColor">@color/ShapeColorLight</item>
-        <item name="HomePageBackgroundImage">@drawable/homepage_light</item>
+        <item name="SideNavBar">@drawable/side_nav_light</item>
     </style>
 
     <style name="Theme.NebulaMobile" parent="Base.Theme.NebulaMobile" />
+
+    <style name="Theme.NebulaMobile.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.NebulaMobile.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.NebulaMobile.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

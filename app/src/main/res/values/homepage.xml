@@ -2,7 +2,6 @@
 
     <style name="Base.Theme.Homepage" parent="Base.Theme.NebulaMobile">
         <item name="android:windowBackground">@drawable/homepage_light</item>
-        <item name="android:background">@drawable/homepage_light</item>
     </style>
 
     <style name="Theme.Homepage" parent="Base.Theme.Homepage"/>
