@@ -23,24 +23,11 @@ public class ReaderJSON {
         this.isr = new InputStreamReader(inputStream);
     }
 
-    /*
-    public JSONObject read() throws IOException, JSONException {
-        BufferedReader br = new BufferedReader(this.isr);
-        StringBuilder json = new StringBuilder();
-        String line;
-        while ((line = br.readLine()) != null)
-            json.append(line);
-        br.close();
-        this.isr.close();
-        return new JSONObject(json.toString());
-    }
-    */
-
     public JSONObject read() throws IOException, JSONException {
         JsonReader jsonReader = new JsonReader(this.isr);
         JSONObject jsonObject = new JSONObject();
-
         jsonReader.beginObject();
+        jsonReader.setLenient(true);
         while (jsonReader.hasNext()) {
             String name = jsonReader.nextName();
             JsonToken token = jsonReader.peek();
@@ -74,32 +61,4 @@ public class ReaderJSON {
         jsonReader.endObject();
         return jsonObject;
     }
-
-
-    /*
-    public JSONObject readDir() throws IOException, JSONException {
-        BufferedReader br = new BufferedReader(this.isr);
-        StringBuilder json = new StringBuilder();
-        String line;
-        while ((line = br.readLine()) != null)
-            json.append(line);
-        br.close();
-        this.isr.close();
-        String j = json.toString().replace("\\","");
-        j = j.replaceAll("\\{|\\}|\\\"|\\d+\":","");
-
-        String[] DirElement = j.replaceAll("\\{|\\}|\\\"|\\d+\":","").split(",");
-        for(int i = 0; i < DirElement.length; i++){
-            DirElement[i] = DirElement[i].replace("name",String.valueOf(i));
-        }
-        JsonReader jsonReader = new JsonReader(this.isr);
-        jsonReader.beginObject();
-        while (jsonReader.hasNext()){
-            Log.d("JSONCREATING", jsonReader.nextName());
-        }
-        Log.d("JSONCREATING", jsonReader.toString());
-        //Log.d("JSONCREATING", new JSONObject(j).toString());
-        return new JSONObject(j);
-    }
-    */
 }

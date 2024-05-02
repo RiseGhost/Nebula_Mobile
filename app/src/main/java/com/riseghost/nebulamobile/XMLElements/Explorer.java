@@ -1,5 +1,6 @@
 package com.riseghost.nebulamobile.XMLElements;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -18,7 +19,6 @@ public class Explorer extends LinearLayout {
     private String NebulaURL;
     private String SessionCookies;
     private ExplorerPath explorerPath;
-
     public Explorer(Context context) {
         super(context);
     }
@@ -70,4 +70,6 @@ public class Explorer extends LinearLayout {
     }
 
     public String getPath(){ return this.path; }
+    public String getNebulaURL(){ return this.NebulaURL; }
+    public String getSessionCookies(){ return this.SessionCookies; }
 }

@@ -1,14 +1,22 @@
 package com.riseghost.nebulamobile.XMLElements;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import com.riseghost.nebulamobile.Desktop;
+import com.riseghost.nebulamobile.NebulaRequestFile;
 import com.riseghost.nebulamobile.R;
+import com.riseghost.nebulamobile.display_images;
 
 
 public class ExplorerItem extends LinearLayout {
@@ -39,11 +47,33 @@ public class ExplorerItem extends LinearLayout {
             this.setOnClickListener((event) -> {
                 this.explorer.UpdatePath(this.explorer.getPath() + this.ElementName + "/");
             });
+        }   else{
+            String NebulaURL = this.explorer.getNebulaURL();
+            String SessionCookie = this.explorer.getSessionCookies();
+            String path = this.explorer.getPath() + this.ElementName;
+            this.setOnClickListener((event) -> {
+                NebulaRequestFile nebulaRequestFile = new NebulaRequestFile(NebulaURL,SessionCookie,path);
+                try {
+                    nebulaRequestFile.join();
+                    switch (nebulaRequestFile.FileType()){
+                        case ("jpg/jpeg"):
+                            Intent intent = new Intent(getContext(),display_images.class);
+                            intent.putExtra("FileName",this.ElementName);
+                            intent.putExtra("data",nebulaRequestFile.getByteArray());
+                            getContext().startActivity(intent);
+                            break;
+                        default:
+                            break;
+                    }
+                } catch (InterruptedException e) {
+                    Log.e("ERROSTARTASDAS", e.getMessage());
+                }
+
+            });
         }
         this.addView(creatIcon());
         this.addView(createLabel());
     }
-
     private TextView createLabel(){
         TextView label = new TextView(getContext());
         label.setText(this.ElementName);

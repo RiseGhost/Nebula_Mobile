@@ -39,6 +39,7 @@
             android:orientation="horizontal"
             android:layout_margin="10dp"
             android:background="@drawable/container">
+
         </LinearLayout>
 
         <com.riseghost.nebulamobile.XMLElements.ExplorerPath
