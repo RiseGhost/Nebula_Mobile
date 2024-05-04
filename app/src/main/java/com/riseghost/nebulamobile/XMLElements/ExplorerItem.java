@@ -23,6 +23,7 @@ public class ExplorerItem extends LinearLayout {
     private final String ElementName;
     private final String Type;
     private final Explorer explorer;
+    private String path;
 
 
     public ExplorerItem(Context context, String ElementName, String Type, Explorer explorer){
@@ -50,17 +51,15 @@ public class ExplorerItem extends LinearLayout {
         }   else{
             String NebulaURL = this.explorer.getNebulaURL();
             String SessionCookie = this.explorer.getSessionCookies();
-            String path = this.explorer.getPath() + this.ElementName;
+            path = this.explorer.getPath() + this.ElementName;
             this.setOnClickListener((event) -> {
                 NebulaRequestFile nebulaRequestFile = new NebulaRequestFile(NebulaURL,SessionCookie,path);
                 try {
                     nebulaRequestFile.join();
                     switch (nebulaRequestFile.FileType()){
                         case ("jpg/jpeg"):
-                            Intent intent = new Intent(getContext(),display_images.class);
-                            intent.putExtra("FileName",this.ElementName);
-                            intent.putExtra("data",nebulaRequestFile.getByteArray());
-                            getContext().startActivity(intent);
+                        case("png"):
+                            LanchDisplayActivity();
                             break;
                         default:
                             break;
@@ -74,6 +73,16 @@ public class ExplorerItem extends LinearLayout {
         this.addView(creatIcon());
         this.addView(createLabel());
     }
+
+    private void LanchDisplayActivity(){
+        Intent intent = new Intent(getContext(),display_images.class);
+        intent.putExtra("FileName",this.ElementName);
+        intent.putExtra("path",path);
+        intent.putExtra("NebulaURL",this.explorer.getNebulaURL());
+        intent.putExtra("SessionCookie",this.explorer.getSessionCookies());
+        getContext().startActivity(intent);
+    }
+
     private TextView createLabel(){
         TextView label = new TextView(getContext());
         label.setText(this.ElementName);
