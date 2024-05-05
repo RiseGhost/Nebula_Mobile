@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.desktop.DesktopFragment">
+    tools:context=".ui.desktop.DesktopFragment"
+    android:theme="@style/Theme.Homepage">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,14 +34,76 @@
 
         </LinearLayout>
 
-        <LinearLayout
+        <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:orientation="horizontal"
-            android:layout_margin="10dp"
-            android:background="@drawable/container">
+            android:background="@drawable/container"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="24dp"
+            android:layout_gravity="center">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_gravity="center">
 
-        </LinearLayout>
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_gravity="center">
+
+                    <RadioButton
+                        android:id="@+id/rb_all"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:button="@null"
+                        android:drawableTop="?attr/RadioButtonAllIcon"
+                        android:text="All"
+                        android:gravity="center"
+                        android:checked="true"
+                        android:layout_margin="5dp"
+                        android:padding="10dp" />
+
+                    <RadioButton
+                        android:id="@+id/rb_files"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableTop="?attr/RadioButtonFileIcon"
+                        android:button="@null"
+                        android:text="Files"
+                        android:gravity="center"
+                        android:layout_margin="5dp"
+                        android:padding="10dp"/>
+
+                    <RadioButton
+                        android:id="@+id/rb_images"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableTop="?attr/RadioButtonImagesIcon"
+                        android:button="@null"
+                        android:text="images"
+                        android:gravity="center"
+                        android:layout_margin="5dp"
+                        android:padding="10dp"/>
+
+                    <RadioButton
+                        android:id="@+id/rb_music"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableTop="?attr/RadioButtonMusicIcon"
+                        android:button="@null"
+                        android:text="Music"
+                        android:gravity="center"
+                        android:layout_margin="5dp"
+                        android:padding="10dp"/>
+                </RadioGroup>
+            </LinearLayout>
+        </HorizontalScrollView>
 
         <com.riseghost.nebulamobile.XMLElements.ExplorerPath
             android:id="@+id/ExplorerPath"

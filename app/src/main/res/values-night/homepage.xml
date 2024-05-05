@@ -2,6 +2,10 @@
 
     <style name="Base.Theme.Homepage" parent="Base.Theme.NebulaMobile">
         <item name="android:windowBackground">@drawable/homepage_dark</item>
+        <item name="RadioButtonAllIcon">@drawable/ic_all_dark</item>
+        <item name="RadioButtonFileIcon">@drawable/ic_file_dark</item>
+        <item name="RadioButtonImagesIcon">@drawable/ic_gallery_dark</item>
+        <item name="RadioButtonMusicIcon">@drawable/ic_audio_file_dark</item>
     </style>
 
 </resources>

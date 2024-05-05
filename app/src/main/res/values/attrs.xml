@@ -3,4 +3,8 @@
     <attr name="CustomShapeColor" format="reference"/>
     <attr name="CustomShapeColorTransparent" format="reference"></attr>
     <attr name="SideNavBar" format="reference"></attr>
+    <attr name="RadioButtonFileIcon" format="reference"></attr>
+    <attr name="RadioButtonAllIcon" format="reference"></attr>
+    <attr name="RadioButtonMusicIcon" format="reference"></attr>
+    <attr name="RadioButtonImagesIcon" format="reference"></attr>
 </resources>
