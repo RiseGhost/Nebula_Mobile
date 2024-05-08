@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
                 r.join();
                 String cookie = new ReadSessionCookie(r.getSharedPreferencesFilename(),getApplicationContext()).read();
                 NebulaLogin login = new NebulaLogin(url.getText().toString(),cookie,email.getText().toString(),password.getText().toString());
-                Toast.makeText(getApplicationContext(),login.getResponseJSON().get("status").toString(),Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(),login.getResponseJSON().get("status").toString(),Toast.LENGTH_LONG).show();
                 if (login.getResponseJSON().get("status").equals("Sucess")){
                     String SessionCookies = new ReadSessionCookie("NebulaSessionCookie",getApplicationContext()).read();
                     Intent intent = new Intent(this,Desktop.class);

@@ -28,93 +28,104 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="0dp"
-                android:text="Hi"
+                android:text="Hi\n  "
                 android:textSize="24dp"
                 android:textStyle="bold" />
 
         </LinearLayout>
 
-        <HorizontalScrollView
+        <androidx.constraintlayout.motion.widget.MotionLayout
+            android:id="@+id/constraintLayout3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/container"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:layout_marginBottom="24dp"
-            android:layout_gravity="center">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="center">
+            app:layoutDescription="@xml/fragment_desktop_xml_constraintlayout3_scene">
 
-                <RadioGroup
+            <HorizontalScrollView
+                android:id="@+id/horizontalScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/container">
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center"
-                    android:layout_gravity="center">
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
 
-                    <RadioButton
-                        android:id="@+id/rb_all"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:button="@null"
-                        android:drawableTop="?attr/RadioButtonAllIcon"
-                        android:text="All"
-                        android:gravity="center"
-                        android:layout_margin="5dp"
-                        android:padding="10dp"
-                        android:background="@drawable/rb_selector"/>
-
-                    <RadioButton
-                        android:id="@+id/rb_files"
+                    <RadioGroup
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:drawableTop="?attr/RadioButtonFileIcon"
-                        android:button="@null"
-                        android:text="Files"
+                        android:layout_gravity="center"
                         android:gravity="center"
-                        android:layout_margin="5dp"
-                        android:padding="10dp"
-                        android:background="@drawable/rb_selector"/>
+                        android:orientation="horizontal">
 
-                    <RadioButton
-                        android:id="@+id/rb_images"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:drawableTop="?attr/RadioButtonImagesIcon"
-                        android:button="@null"
-                        android:text="images"
-                        android:gravity="center"
-                        android:layout_margin="5dp"
-                        android:padding="10dp"
-                        android:background="@drawable/rb_selector"/>
+                        <RadioButton
+                            android:id="@+id/rb_all"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/rb_selector"
+                            android:button="@null"
+                            android:drawableTop="?attr/RadioButtonAllIcon"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text="All" />
 
-                    <RadioButton
-                        android:id="@+id/rb_music"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:drawableTop="?attr/RadioButtonMusicIcon"
-                        android:button="@null"
-                        android:text="Music"
-                        android:gravity="center"
-                        android:layout_margin="5dp"
-                        android:padding="10dp"
-                        android:background="@drawable/rb_selector"/>
-                </RadioGroup>
-            </LinearLayout>
-        </HorizontalScrollView>
+                        <RadioButton
+                            android:id="@+id/rb_files"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/rb_selector"
+                            android:button="@null"
+                            android:drawableTop="?attr/RadioButtonFileIcon"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text="Files" />
 
+                        <RadioButton
+                            android:id="@+id/rb_images"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/rb_selector"
+                            android:button="@null"
+                            android:drawableTop="?attr/RadioButtonImagesIcon"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text="images" />
 
+                        <RadioButton
+                            android:id="@+id/rb_music"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/rb_selector"
+                            android:button="@null"
+                            android:drawableTop="?attr/RadioButtonMusicIcon"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text="Music" />
+                    </RadioGroup>
+                </LinearLayout>
+            </HorizontalScrollView>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        </androidx.constraintlayout.motion.widget.MotionLayout>
+
+        <androidx.constraintlayout.motion.widget.MotionLayout
+            android:id="@+id/constraintLayout2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            app:layoutDescription="@xml/fragment_desktop_xml_constraintlayout2_scene">
 
             <LinearLayout
+                android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
@@ -158,6 +169,6 @@
 
             </LinearLayout>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.motion.widget.MotionLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
