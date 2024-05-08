@@ -1,6 +1,5 @@
 package com.riseghost.nebulamobile.XMLElements;
 
-import android.app.Activity;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -9,10 +8,11 @@ import android.widget.LinearLayout;
 import androidx.annotation.Nullable;
 
 import com.riseghost.nebulamobile.NebulaDir;
-import com.riseghost.nebulamobile.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.logging.Handler;
 
 public class Explorer extends LinearLayout {
     private String path;
@@ -51,25 +51,41 @@ public class Explorer extends LinearLayout {
     public void UpdatePath(String path){
         this.path = path;
         this.explorerPath.UpdatePath();
-        this.removeAllViews();
-        NebulaDir dir = new NebulaDir(this.NebulaURL,this.path,this.SessionCookies);
-        try{
-            JSONObject diretory = dir.getResponseJSON();
-            if (diretory == null) return;
-            for(int index = 0; index < diretory.length() / 2; index++){
-                String NameElement = diretory.getString(String.valueOf(index));
-                String Type = diretory.getString("type_" + index);
-                Log.d("EXPLORERUPDATEPATH", NameElement + "  " + Type);
-                this.addView(new ExplorerItem(getContext(),NameElement,Type,this));
-            }
-        }   catch (InterruptedException e){
-            Log.e("NebulaExplorer", e.getMessage());
-        } catch (JSONException e) {
-            Log.e("NebulaExplorer", e.getMessage());
-        }
+        removeAllViews();
+        new UpdatePathThread(this);
     }
 
     public String getPath(){ return this.path; }
     public String getNebulaURL(){ return this.NebulaURL; }
     public String getSessionCookies(){ return this.SessionCookies; }
+
+    private class UpdatePathThread extends Thread{
+        Explorer explorer;
+        public UpdatePathThread(Explorer explorer){
+            this.explorer = explorer;
+            this.start();
+        }
+
+        @Override
+        public void run(){
+            NebulaDir dir = new NebulaDir(NebulaURL,path,SessionCookies);
+            try{
+                JSONObject diretory = dir.getResponseJSON();
+                if (diretory == null) return;
+                for(int index = 0; index < diretory.length() / 2; index++){
+                    String NameElement = diretory.getString(String.valueOf(index));
+                    String Type = diretory.getString("type_" + index);
+                    Log.d("EXPLORERUPDATEPATH", NameElement + "  " + Type);
+                    android.os.Handler mainHandler = new android.os.Handler(getContext().getMainLooper());
+                    mainHandler.post(() -> {
+                        addView(new ExplorerItem(getContext(),NameElement,Type,this.explorer));
+                    });
+                }
+            }   catch (InterruptedException e){
+                Log.e("NebulaExplorer", e.getMessage());
+            } catch (JSONException e) {
+                Log.e("NebulaExplorer", e.getMessage());
+            }
+        }
+    }
 }

@@ -36,7 +36,7 @@
 
         <HorizontalScrollView
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/container"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
@@ -44,7 +44,7 @@
             android:layout_gravity="center">
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_gravity="center">
 
@@ -64,9 +64,9 @@
                         android:drawableTop="?attr/RadioButtonAllIcon"
                         android:text="All"
                         android:gravity="center"
-                        android:checked="true"
                         android:layout_margin="5dp"
-                        android:padding="10dp" />
+                        android:padding="10dp"
+                        android:background="@drawable/rb_selector"/>
 
                     <RadioButton
                         android:id="@+id/rb_files"
@@ -78,7 +78,8 @@
                         android:text="Files"
                         android:gravity="center"
                         android:layout_margin="5dp"
-                        android:padding="10dp"/>
+                        android:padding="10dp"
+                        android:background="@drawable/rb_selector"/>
 
                     <RadioButton
                         android:id="@+id/rb_images"
@@ -89,7 +90,8 @@
                         android:text="images"
                         android:gravity="center"
                         android:layout_margin="5dp"
-                        android:padding="10dp"/>
+                        android:padding="10dp"
+                        android:background="@drawable/rb_selector"/>
 
                     <RadioButton
                         android:id="@+id/rb_music"
@@ -100,46 +102,62 @@
                         android:text="Music"
                         android:gravity="center"
                         android:layout_margin="5dp"
-                        android:padding="10dp"/>
+                        android:padding="10dp"
+                        android:background="@drawable/rb_selector"/>
                 </RadioGroup>
             </LinearLayout>
         </HorizontalScrollView>
 
-        <com.riseghost.nebulamobile.XMLElements.ExplorerPath
-            android:id="@+id/ExplorerPath"
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:gravity="center"
-            android:padding="3dp"
-            app:layout_constraintBottom_toTopOf="@+id/scrollExpolorer" />
+            android:layout_height="match_parent">
 
-        <ScrollView
-            android:id="@+id/scrollExpolorer"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginBottom="24dp"
-            android:background="@drawable/container_transparent_bottom"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view">
-
-
-            <com.riseghost.nebulamobile.XMLElements.Explorer
-                android:id="@+id/Explorer"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent">
 
-            </com.riseghost.nebulamobile.XMLElements.Explorer>
+                <com.riseghost.nebulamobile.XMLElements.ExplorerPath
+                    android:id="@+id/ExplorerPath"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:gravity="center"
+                    android:padding="3dp"
+                    app:layout_constraintBottom_toTopOf="@+id/scrollExpolorer" />
 
-        </ScrollView>
+                <ScrollView
+                    android:id="@+id/scrollExpolorer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="24dp"
+                    android:background="@drawable/container_transparent_bottom"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent">
+
+
+                    <com.riseghost.nebulamobile.XMLElements.Explorer
+                        android:id="@+id/Explorer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                    </com.riseghost.nebulamobile.XMLElements.Explorer>
+
+                </ScrollView>
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
