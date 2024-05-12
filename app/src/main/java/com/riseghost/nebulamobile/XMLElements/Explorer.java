@@ -12,6 +12,8 @@ import com.riseghost.nebulamobile.NebulaDir;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.logging.Handler;
 
 public class Explorer extends LinearLayout {
@@ -19,6 +21,9 @@ public class Explorer extends LinearLayout {
     private String NebulaURL;
     private String SessionCookies;
     private ExplorerPath explorerPath;
+    private ArrayList<String> FilterImageFiles = new ArrayList<>(Arrays.asList(".jpeg",".jpg",".png"));
+    private ArrayList<String> FilterAudioFiles = new ArrayList<>(Arrays.asList(".mp3"));
+    private String Filter = null;
     public Explorer(Context context) {
         super(context);
     }
@@ -43,6 +48,8 @@ public class Explorer extends LinearLayout {
         this.SessionCookies = SessionCookies;
     }
 
+    public void setFilter(String Filter) { this.Filter = Filter; }
+
     public void setExplorerPath(ExplorerPath explorerPath){
         this.explorerPath = explorerPath;
         this.explorerPath.setExplorer(this);
@@ -58,6 +65,27 @@ public class Explorer extends LinearLayout {
     public String getPath(){ return this.path; }
     public String getNebulaURL(){ return this.NebulaURL; }
     public String getSessionCookies(){ return this.SessionCookies; }
+
+    public String FileExtension(String filename){
+        String fileEx = "";
+        for (int index = filename.length() - 1; index >= 0 && !fileEx.contains("."); index-- ){
+            fileEx = filename.charAt(index) + fileEx;
+        }
+        return (fileEx.length() == filename.length()) ? "" : fileEx;
+    }
+
+    private Boolean isImageFile(String filename){
+        return FilterImageFiles.contains(FileExtension(filename));
+    }
+
+    private Boolean isAudioFile(String filename){
+        return FilterAudioFiles.contains(FileExtension(filename));
+    }
+
+    private Boolean isFile(String filename){
+        String fileExtension = FileExtension(filename);
+        return !FilterImageFiles.contains(fileExtension) && !FilterAudioFiles.contains(fileExtension);
+    }
 
     private class UpdatePathThread extends Thread{
         Explorer explorer;
@@ -77,15 +105,34 @@ public class Explorer extends LinearLayout {
                     String Type = diretory.getString("type_" + index);
                     Log.d("EXPLORERUPDATEPATH", NameElement + "  " + Type);
                     android.os.Handler mainHandler = new android.os.Handler(getContext().getMainLooper());
-                    mainHandler.post(() -> {
-                        addView(new ExplorerItem(getContext(),NameElement,Type,this.explorer));
-                    });
+                    if (this.explorer.Filter == null) CreateItem(NameElement,Type);
+                    else{
+                        switch (this.explorer.Filter){
+                            case "image":
+                                if (isImageFile(NameElement)) CreateItem(NameElement,Type);
+                                break;
+                            case "audio":
+                                if (isAudioFile(NameElement)) CreateItem(NameElement,Type);
+                                break;
+                            case "file":
+                                if (isFile(NameElement) && !Type.equals("dir")) CreateItem(NameElement,Type);
+                                break;
+                            default:
+                                CreateItem(NameElement,Type);
+                                break;
+                        }
+                    }
                 }
             }   catch (InterruptedException e){
                 Log.e("NebulaExplorer", e.getMessage());
             } catch (JSONException e) {
                 Log.e("NebulaExplorer", e.getMessage());
             }
+        }
+
+        public void CreateItem(String NameElement, String Type){
+            android.os.Handler mainHandler = new android.os.Handler(getContext().getMainLooper());
+            mainHandler.post(() -> { addView(new ExplorerItem(getContext(),NameElement,Type,this.explorer)); });
         }
     }
 }

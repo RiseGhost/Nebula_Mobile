@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -21,6 +22,7 @@ public class DesktopFragment extends Fragment {
     private FragmentDesktopBinding binding;
     private String NebulaURL;
     private String SessionCookie;
+    private Explorer explorer;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentDesktopBinding.inflate(inflater, container, false);
@@ -31,14 +33,26 @@ public class DesktopFragment extends Fragment {
         RadioButton rb_all = binding.rbAll;
         rb_all.setChecked(true);
 
-        Explorer explorer = binding.Explorer;
+        explorer = binding.Explorer;
         explorer.setNebulaURL(NebulaURL);
         explorer.setSessionCookies(SessionCookie);
         explorer.setExplorerPath(binding.ExplorerPath);
         explorer.UpdatePath("/");
         new UpdateUserName();
 
+        AddFilterEvent(rb_all,null);
+        AddFilterEvent(binding.rbFiles,"file");
+        AddFilterEvent(binding.rbImages,"image");
+        AddFilterEvent(binding.rbAudio,"audio");
+
         return root;
+    }
+
+    private void AddFilterEvent(RadioButton rb, String filter){
+        rb.setOnClickListener((e) -> {
+            explorer.setFilter(filter);
+            explorer.UpdatePath(explorer.getPath());
+        });
     }
 
     @Override
