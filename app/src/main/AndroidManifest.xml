@@ -16,6 +16,9 @@
         android:theme="@style/Theme.NebulaMobile"
         tools:targetApi="31">
         <activity
+            android:name=".display_text"
+            android:exported="false" />
+        <activity
             android:name=".display_images"
             android:exported="false" />
         <activity

@@ -17,6 +17,7 @@ import com.riseghost.nebulamobile.Desktop;
 import com.riseghost.nebulamobile.NebulaRequestFile;
 import com.riseghost.nebulamobile.R;
 import com.riseghost.nebulamobile.display_images;
+import com.riseghost.nebulamobile.display_text;
 
 
 public class ExplorerItem extends LinearLayout {
@@ -59,7 +60,10 @@ public class ExplorerItem extends LinearLayout {
                     switch (nebulaRequestFile.FileType()){
                         case ("jpg/jpeg"):
                         case("png"):
-                            LanchDisplayActivity();
+                            LaunchActivity(display_images.class);
+                            break;
+                        case ("File"):
+                            LaunchActivity(display_text.class);
                             break;
                         default:
                             break;
@@ -74,8 +78,8 @@ public class ExplorerItem extends LinearLayout {
         this.addView(createLabel());
     }
 
-    private void LanchDisplayActivity(){
-        Intent intent = new Intent(getContext(),display_images.class);
+    private void LaunchActivity(Class ActivityClass){
+        Intent intent = new Intent(getContext(),ActivityClass);
         intent.putExtra("FileName",this.ElementName);
         intent.putExtra("path",path);
         intent.putExtra("NebulaURL",this.explorer.getNebulaURL());
